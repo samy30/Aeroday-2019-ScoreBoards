@@ -1,7 +1,9 @@
 import React from 'react';
 import Firebase from 'firebase';
 import config from './config';
-
+import 'bootstrap/dist/css/bootstrap.css';
+import "./title.scss"
+import "./app.css"
 
 class App extends React.Component {
 
@@ -27,10 +29,11 @@ class App extends React.Component {
     ref.on('value', snapshot => {
       const state = snapshot.val();
       this.setState(state);
+      console.log(this.state.players.sort());
     });
     console.log('DATA RETRIEVED');
   }
-  
+
   //get data for the first time
   componentDidMount() {
     this.getUserData();
@@ -46,44 +49,57 @@ class App extends React.Component {
 
   render() {
     const { players } = this.state;
-    const listPlayers = players.map(player =>
-        <div key={player.uid} className="card float-left" style={{width: '18rem', marginRight: '1rem'}}>
-        <div className="card-body">
-          <h5 className="card-title">{ player.name }</h5>
-          <p className="card-text">{ player.score }</p>
-          <button onClick={ () => this.removeData(player) } className="btn btn-link">Delete</button>
-          <button onClick={ () => this.updateData(player) } className="btn btn-link">Edit</button>
+    const title = () => { return(
+        <div className="stage">
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
+          <div className="layer"></div>
         </div>
-      </div>
-      );
-      const listPLayerTable = players.sort((a, b) => a.score < b.score)
+    )};
+    let i = 0;
+      const listPLayerTable = players.sort((a, b) => {
+        if (a.score > b.score) return -1;
+        else if (a.score < b.score) return 1;
+        else return 0
+      })
           .map(player =>
           <tr key={player.uid}>
+            <th>{i = i+1}</th>
             <th scope="row">{player.name}</th>
             <th>{player.score}</th>
-            <th>
-               <button onClick={ () => this.removeData(player) } className="btn btn-link">Delete</button>
-            </th>
-            <th>
-               <button onClick={ () => this.updateData(player) } className="btn btn-link">Edit</button>
-            </th>
           </tr>
         );
     return(
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <div className="row">
           <div className='col-xl-12'>
-            <h1 align="center">Aerochallenge ScoreBoard</h1>
+            <h1 align="center" className="title">{title()}</h1>
           </div>
         </div>
         <div className='row'>
           <table className="table">
           <thead>
-            <tr className="table-primary">
+            <tr className="trow100 head">
+              <th scope="col">#</th>
               <th scope="col">Team Name</th>
               <th scope="col">Score</th>
-              <th scope="col">function 1</th>
-              <th scope="col">function 2</th>
             </tr>
           </thead>
           <tbody>
@@ -113,47 +129,6 @@ class App extends React.Component {
       </div>
     )
   }
-  
-  handleSubmit = (event) => {
-    event.preventDefault();
-    let name = this.refs.name.value;
-    let score = this.refs.score.value;
-    let uid = this.refs.uid.value;
-  
-    if (uid && name && score){
-      const { players } = this.state;
-      const devIndex = players.findIndex(data => {
-        return data.uid === uid 
-      });
-      players[devIndex].name = name;
-      players[devIndex].score = score;
-      this.setState({ players });
-    }
-    else if (name && score ) {
-      const uid = new Date().getTime().toString();
-      const { players } = this.state;
-      players.push({ uid, name, score })
-      this.setState({ players });
-    }
-  
-    this.refs.name.value = '';
-    this.refs.score.value = '';
-    this.refs.uid.value = '';
-  }
-  
-  removeData = (player) => {
-    const { players } = this.state;
-    const newState = players.filter(data => {
-      return data.uid !== player.uid;
-    });
-    this.setState({ players: newState });
-  }
-  
-  updateData = (player) => {
-    this.refs.uid.value = player.uid;
-    this.refs.name.value = player.name;
-    this.refs.score.value = player.score;
-  }  
 
 }
 

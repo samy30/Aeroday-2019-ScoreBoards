@@ -1,0 +1,37 @@
+.container-fluid {
+    /*normal mode*/
+    /*margin-top: 120px;*/
+    /*Full SCREEN*/
+    margin-top: 180px;
+}
+ .table {
+        margin-right: 150px;
+        margin-left: 150px;
+        color: white;
+        font-family: sans-serif;
+        font-size: 25px;
+        overflow: hidden;
+
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        text-shadow: 2px 2px 4px #000000;
+ }
+
+ tr {
+     border-spacing: 10px;
+    background-color: rgba(100, 100, 100, 0.5);
+     border-top: none;
+ }
+
+ body {
+     background-image: url("img/x8-quadcopter-drone-hd-wallpaper-3800x2322.jpg");
+     background-size: 2000px;
+ }
+
+.table th, .table td {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-top: none;
+}
+
+
