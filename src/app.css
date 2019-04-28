@@ -3,13 +3,14 @@
     /*margin-top: 120px;*/
     /*Full SCREEN*/
     margin-top: 180px;
+    margin-left: 100px;
 }
  .table {
         margin-right: 150px;
         margin-left: 150px;
         color: white;
         font-family: sans-serif;
-        font-size: 25px;
+        font-size: 35px;
         overflow: hidden;
 
         border-collapse: separate;
@@ -25,12 +26,12 @@
 
  body {
      /*background-image: url("img/x8-quadcopter-drone-hd-wallpaper-3800x2322.jpg");*/
-     background-color: rgb(0, 177, 64);
+     background-color: rgb(0, 255, 0);
      background-size: 2000px;
  }
 
 .table th, .table td {
-    padding: 0.5rem;
+    padding: 0.4rem;
     vertical-align: top;
     border-top: none;
 }
