@@ -21,7 +21,6 @@ class App extends React.Component {
     Firebase.database().ref('/').set(this.state);
     console.log('DATA SAVED');
   }
-  
 
   //retreive data from firebase
   getUserData = () => {

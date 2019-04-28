@@ -24,7 +24,8 @@
  }
 
  body {
-     background-image: url("img/x8-quadcopter-drone-hd-wallpaper-3800x2322.jpg");
+     /*background-image: url("img/x8-quadcopter-drone-hd-wallpaper-3800x2322.jpg");*/
+     background-color: rgb(0, 177, 64);
      background-size: 2000px;
  }
 
